@@ -1,0 +1,27 @@
+/* Ámbar Bistró · capa de rendimiento (móvil y escritorio)
+   Regla: solo se animan transform y opacity (aceleradas por GPU); nada de filtros en vivo sobre fotos ni mapas. */
+
+/* Fotos: el ajuste de color ya viene aplicado en los archivos .webp, así que no se recalcula en el teléfono */
+img.wx-photo-uniform{filter:none}
+.mp iframe{filter:none}
+
+/* Transiciones solo con propiedades baratas (sin "all" ni filter) */
+.btn{transition:transform .2s}
+.dys button,.slt button{transition:background-color .15s,border-color .15s,color .15s,transform .15s}
+.soc-c i{transition:transform .25s,background-color .25s,color .25s}
+.bk{transition:opacity .25s,visibility .25s,transform .25s}
+
+/* Táctil: toque inmediato (sin retraso ni zoom por doble toque) y sin destello gris del navegador */
+a,button,summary,label,[role=button],[data-go],[data-book],[data-copy]{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.view{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+
+/* En pantallas táctiles el "hover" se queda pegado tras el toque: se desactiva, y el toque da su propia respuesta */
+@media(hover:none){
+  .btn:hover{filter:none;transform:none}
+  .btn::before{display:none}
+  .wxl{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(40,12,28,.94)}
+}
+@media(hover:hover){.btn:hover{filter:brightness(1.08)}}
+
+/* Capas: solo lo que se anima permanentemente se promueve a GPU */
+.fxbg i{backface-visibility:hidden}

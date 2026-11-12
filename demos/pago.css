@@ -1,0 +1,59 @@
+/* WebXpress · mejora de la pestaña de pagos SPEI (capa extra, usa los colores de cada demo) */
+.pg-i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* tarjeta bancaria */
+.bank{overflow:hidden;padding-top:1.4rem}
+.bank::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--ac),var(--ac2));z-index:2}
+.pg-chips{list-style:none;padding:0;margin:0 0 .9rem;display:flex;flex-wrap:wrap;gap:.4rem}
+.pg-chips li{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:600;padding:.28rem .65rem;border-radius:99px;color:var(--fg);background:color-mix(in srgb,var(--ac) 11%,transparent);border:1px solid color-mix(in srgb,var(--ac) 22%,transparent)}
+.pg-chips .pg-i{color:var(--ac)}
+.pg-cl{display:block;margin:.8rem 0 -.5rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--mut)}
+.clb{border:1.5px dashed color-mix(in srgb,var(--ac) 45%,transparent)}
+.clb button,.pact .btn{transition:transform .2s,filter .2s}
+.clb button:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.clb button:focus-visible,.pact .btn:focus-visible,.sim-go:focus-visible,.pro-cta:focus-visible{outline:3px solid color-mix(in srgb,var(--ac) 60%,#fff);outline-offset:2px}
+/* pasos con estado */
+.stp li{transition:opacity .3s,transform .3s;opacity:.62}
+.stp li.now,.stp li.done{opacity:1}
+.stp li.now::before{box-shadow:0 0 0 5px color-mix(in srgb,var(--ac) 24%,transparent)}
+.stp li.done::before{content:"\2713"}
+.stp li.done{color:var(--mut)}
+/* aviso al copiar */
+.pg-toast{position:fixed;left:50%;bottom:max(1.2rem,env(safe-area-inset-bottom));transform:translate(-50%,24px);opacity:0;pointer-events:none;z-index:90;background:var(--fg);color:var(--bg);font:600 .86rem/1.2 var(--bf);padding:.65rem 1.1rem;border-radius:99px;box-shadow:0 14px 30px -12px rgba(0,0,0,.45);transition:opacity .25s,transform .25s}
+.pg-toast.on{opacity:1;transform:translate(-50%,0)}
+/* panel para dueños de negocio */
+.card.pro{grid-column:1/-1;padding:clamp(1.1rem,2.4vw,1.8rem);border-style:solid;border-color:color-mix(in srgb,var(--ac) 40%,var(--line));background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 9%,var(--card)),var(--card) 60%)}
+@media(hover:hover){.card.pro:hover{transform:none;box-shadow:none}}
+.pro-k{display:inline-flex;align-items:center;gap:.45rem;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--ac);color:var(--on);padding:.3rem .8rem;border-radius:99px}
+.pro h3{font-size:clamp(1.25rem,2.6vw,1.8rem);line-height:1.15;margin:.8rem 0 .5rem;max-width:42rem}
+.pro-p{color:var(--mut);font-size:.92rem;max-width:44rem}
+.pro-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.4rem;margin-top:1.2rem;align-items:start}
+.sim{border:1px solid var(--line);border-radius:16px;padding:1rem 1.1rem;background:color-mix(in srgb,var(--bg) 70%,var(--card))}
+.sim-t{display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.sim-t b{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.sim-t span{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);border:1px solid var(--line);padding:.15rem .55rem;border-radius:99px}
+.pg-tl{list-style:none;padding:0;margin:0;display:grid;gap:.55rem}
+.pg-tl li{display:flex;gap:.7rem;align-items:center;font-size:.88rem;color:var(--mut);transition:color .3s}
+.pg-tl li i{display:grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;flex:none;border:2px solid var(--line);font-style:normal;font-size:.8rem;font-weight:800;transition:background .35s,border-color .35s,color .35s,transform .35s}
+.pg-tl li.on{color:var(--fg)}
+.pg-tl li.on i{background:var(--ac);border-color:var(--ac);color:var(--on);transform:scale(1.08)}
+.sim-n{margin-top:.9rem;display:flex;gap:.7rem;align-items:flex-start;padding:.7rem .85rem;border-radius:14px;background:var(--card);border:1px solid var(--line);box-shadow:0 10px 24px -16px rgba(0,0,0,.4);opacity:0;transform:translateY(8px) scale(.98);transition:opacity .4s,transform .4s;min-height:3.6rem}
+.sim-n.on{opacity:1;transform:none}
+.sim-n i{display:grid;place-items:center;width:2rem;height:2rem;flex:none;border-radius:10px;background:var(--ac);color:var(--on);font-size:1rem}
+.sim-n b{display:block;font-size:.84rem}.sim-n small{display:block;font-size:.78rem;color:var(--mut);line-height:1.35}
+.sim-go{margin-top:.9rem;width:100%;cursor:pointer;border:1.5px solid var(--ac);background:transparent;color:var(--fg);border-radius:99px;padding:.6rem 1rem;font:600 .86rem var(--bf);transition:background .2s,color .2s}
+.sim-go:hover:not(:disabled){background:var(--ac);color:var(--on)}.sim-go:disabled{opacity:.55;cursor:default}
+.cmp2{display:grid;gap:.7rem}
+.cmp2>div{border:1px solid var(--line);border-radius:16px;padding:.9rem 1.1rem;background:var(--card)}
+.cmp2 .auto{border-color:color-mix(in srgb,var(--ac) 55%,var(--line));background:color-mix(in srgb,var(--ac) 8%,var(--card))}
+.cmp2 h4{font:800 .74rem var(--bf);letter-spacing:.09em;text-transform:uppercase;margin-bottom:.5rem;display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap}
+.cmp2 h4 small{font-weight:600;letter-spacing:0;text-transform:none;color:var(--mut)}
+.cmp2 ul{list-style:none;padding:0;margin:0;display:grid;gap:.4rem;font-size:.85rem}
+.cmp2 li{display:flex;gap:.55rem;align-items:flex-start;line-height:1.35}
+.cmp2 li::before{content:"\2022";color:var(--mut);font-weight:800;flex:none;width:1rem;text-align:center}
+.cmp2 .auto li::before{content:"\2713";color:var(--ac)}
+.pro-f{display:flex;gap:.9rem 1.4rem;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:1.2rem;padding-top:1rem;border-top:1px dashed var(--line)}
+.pro-f p{font-size:.78rem;color:var(--mut);max-width:34rem;line-height:1.45}.pro-f p b{color:var(--fg)}
+.pro-cta{display:flex;gap:.6rem;flex-wrap:wrap}
+@media(max-width:860px){.pro-grid{grid-template-columns:1fr}.pro-f{align-items:stretch}.pro-cta .btn{flex:1}}
+@media(prefers-reduced-motion:reduce){.pg-tl li i,.sim-n,.stp li,.pg-toast{transition:none}}
+@media(max-width:860px){#v-pagar .py{padding-bottom:6rem}}

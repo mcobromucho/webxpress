@@ -1,0 +1,115 @@
+/* WebXpress · sistema de fotografía uniforme
+   1) Gradación editorial común  2) Velo de color por negocio  3) Proporciones fijas  4) Micro-interacciones
+   Cada demo define su velo con --wx-veil (y --wx-veil-o). Si no lo define, usa su color de acento. */
+
+:root{--wx-veil:var(--ac,#4338FF);--wx-veil-o:.16;--wx-r:var(--r,20px);--wx-ease:cubic-bezier(.2,.7,.2,1)}
+
+/* ---------- 1 · Gradación común: mismo balance de blancos y luz natural ---------- */
+.wx-photo-uniform{filter:contrast(.95) brightness(1.04) saturate(.90) sepia(.06)}
+
+/* ---------- 2 · Velo integrado (soft-light a baja opacidad) ---------- */
+.wx-frame,.wx-veil{position:relative;overflow:hidden;isolation:isolate}
+.wx-frame::after,.wx-veil::before,.ph::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--wx-veil);mix-blend-mode:soft-light;opacity:var(--wx-veil-o)}
+.wx-veil>figcaption,.wx-veil>.tx{z-index:2}
+
+/* ---------- 3 · Marco con proporción fija ---------- */
+.wx-frame{aspect-ratio:var(--wx-ar,4/5);border-radius:var(--wx-r);background:color-mix(in srgb,var(--wx-veil) 14%,var(--bg2,#eee))}
+.wx-frame picture{display:block;width:100%;height:100%}
+.wx-frame img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* ---------- 4 · Micro-interacción: zoom 1.03 en 0.35 s ---------- */
+.wx-frame img,.tp img,.gal img,.car img,.pd .mi img{transition:transform .35s ease}
+@media(hover:hover){
+  .wx-frame:hover img,.tp:hover img,.gal figure:hover img,.car figure:hover img,.pd:hover .mi img,.wx-zoomable:hover img{transform:scale(1.03)}
+}
+
+/* ---------- Ajustes de proporción en las demos existentes ---------- */
+.gal figure{height:auto;aspect-ratio:4/3;border-radius:var(--r)}
+.car figure,.car figure.card{aspect-ratio:4/5}
+.dishes.three .pd .mi,.pd .mi{aspect-ratio:1/1}
+@media(max-width:860px){.tp{aspect-ratio:16/10;min-height:0}}
+
+/* ---------- Tarjetas con foto en el index (capturas de las demos) ---------- */
+.vp img.wx-photo-uniform{transition:transform .35s ease}
+@media(hover:hover){.shot:hover .vp img.wx-photo-uniform{transform:scale(1.03)}}
+
+/* ======================================================================
+   COMPONENTES NUEVOS (Luna Estética): chips, carrusel, mosaico, arcos, lightbox
+   ====================================================================== */
+.wx-sec{margin-top:2.2rem}
+.wx-sec>h3{font:var(--hw,700) 1.5rem/1.1 var(--hf);letter-spacing:var(--ls,0);margin:0 0 .25rem}
+.wx-sec>p{margin:0 0 .9rem;color:var(--mut);font-size:.92rem}
+
+/* chips de filtro */
+.wx-chips{display:flex;gap:.45rem;flex-wrap:wrap;margin:.2rem 0 1rem}
+.wx-chips button{font:600 .85rem var(--bf,inherit);padding:.5rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .2s}
+.wx-chips button:hover{border-color:var(--ac)}
+.wx-chips button[aria-pressed=true]{background:var(--ac);border-color:var(--ac);color:var(--on)}
+.wx-chips button:active{transform:scale(.97)}
+
+/* carrusel horizontal con snap */
+.wxc{position:relative}
+.wxc-top{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem}
+.wxc-ctl{display:flex;gap:.4rem}
+.wxc-b{width:2.5rem;height:2.5rem;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ac);font-size:1.3rem;line-height:1;cursor:pointer;transition:background .25s,color .25s,opacity .25s}
+.wxc-b:hover:not(:disabled){background:var(--ac);color:var(--on)}
+.wxc-b:disabled{opacity:.35;cursor:default}
+.wxc-t{display:flex;gap:.9rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:.4rem .1rem 1rem;margin:0 -.1rem;overscroll-behavior-x:contain}
+.wxc-t::-webkit-scrollbar{display:none}
+.wxc-t:focus-visible{outline:2px solid var(--ac);outline-offset:4px;border-radius:var(--wx-r)}
+.wxc-i{flex:0 0 min(15rem,68%);scroll-snap-align:start;margin:0}
+.wxc-i .wx-frame{width:100%;box-shadow:0 28px 38px -30px var(--ac);transition:box-shadow .35s}
+.wxc-i figcaption{display:grid;gap:.1rem;padding:.7rem .15rem 0;font-size:.82rem;color:var(--mut)}
+.wxc-i figcaption b{color:var(--fg);font-size:.95rem}
+.wxc-p{height:3px;border-radius:3px;background:color-mix(in srgb,var(--ac) 18%,transparent);overflow:hidden}
+.wxc-p i{display:block;height:100%;width:100%;background:var(--ac);transform-origin:left;transform:scaleX(.2);transition:transform .2s linear}
+/* La tarjeta que llega al centro crece suavemente (solo navegadores con scroll-driven animations) */
+@supports (animation-timeline:view()){
+  .wxc-i .wx-frame{animation:wxpeek linear both;animation-timeline:view(inline);animation-range:entry 0% cover 50%}
+  @keyframes wxpeek{from{transform:scale(.93);opacity:.75}to{transform:none;opacity:1}}
+}
+
+/* mosaico uniforme */
+.wxg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+@media(min-width:720px){.wxg{grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem}}
+.wxg-t{display:block;width:100%;padding:0;border:0;cursor:zoom-in;font:inherit;color:#fff;text-align:left;animation:wxin .6s var(--wx-ease) backwards;animation-delay:calc(var(--i,0)*55ms)}
+.wxg-t[hidden]{display:none}
+.wxg-t span{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.8rem .8rem .7rem;font-weight:600;font-size:.85rem;background:linear-gradient(0deg,rgba(40,10,25,.62),transparent);transform:translateY(55%);opacity:0;transition:transform .35s ease,opacity .35s ease}
+.wxg-t:hover span,.wxg-t:focus-visible span{transform:none;opacity:1}
+@media(hover:none){.wxg-t span{transform:none;opacity:1}}
+.wxg-t:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+@keyframes wxin{from{opacity:0;transform:translateY(16px) scale(.97)}}
+
+/* ventanas en arco (el salón) */
+.wxa{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:30rem}
+.wxa figure{margin:0}
+.wxa figure:nth-child(2){margin-top:2rem}
+.wxa .wx-frame{--wx-ar:3/4;border-radius:999px 999px var(--wx-r) var(--wx-r);box-shadow:0 30px 40px -30px var(--ac)}
+.wxa figcaption{padding:.6rem .2rem 0;font-size:.82rem;color:var(--mut);text-align:center}
+
+/* lightbox */
+.wxl{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:1rem;background:rgba(40,12,28,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.wxl.on{opacity:1;visibility:visible}
+.wxl figure{margin:0;display:grid;gap:.7rem;justify-items:center;max-width:min(92vw,34rem)}
+.wxl img{max-width:100%;max-height:78vh;border-radius:var(--wx-r);box-shadow:0 40px 80px -30px rgba(0,0,0,.6);transform:scale(.96);transition:transform .35s var(--wx-ease),opacity .25s}
+.wxl.on img{transform:none}
+.wxl img.sw{opacity:0}
+.wxl figcaption{color:#fff;font-size:.9rem;text-align:center}
+.wxl button{position:absolute;width:2.8rem;height:2.8rem;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--ac);font-size:1.5rem;line-height:1;cursor:pointer;display:grid;place-items:center}
+.wxl .x{top:1rem;right:1rem}.wxl .p{left:1rem;top:50%}.wxl .n{right:1rem;top:50%}
+@media(max-width:600px){.wxl .p,.wxl .n{top:auto;bottom:1rem}.wxl .p{left:calc(50% - 3.4rem)}.wxl .n{right:calc(50% - 3.4rem)}}
+
+@media(prefers-reduced-motion:reduce){
+  .wx-frame img,.tp img,.gal img,.car img,.pd .mi img,.wxl img{transition:none!important}
+  .wx-frame:hover img,.tp:hover img,.gal figure:hover img,.car figure:hover img,.pd:hover .mi img{transform:none!important}
+  .wxg-t,.wxc-i .wx-frame{animation:none!important}
+}
+
+/* botón-foto del carrusel */
+.wxc-i .wx-frame{display:block;font:inherit}
+
+/* precio sobre las fotos y botón de reserva del lightbox */
+.wx-pr{font-style:normal;color:var(--ac);font-weight:700}
+.wx-tag{position:absolute;left:.6rem;top:.6rem;z-index:2;padding:.28rem .65rem;border-radius:99px;background:color-mix(in srgb,var(--card) 88%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--ac);font:700 .72rem var(--bf,inherit);font-style:normal}
+.wxl .rsv{position:static;width:auto;height:auto;border-radius:99px;padding:.75rem 1.4rem;font:600 .92rem var(--bf,inherit);background:var(--ac);color:var(--on);box-shadow:0 14px 26px -14px var(--ac)}
+.wxl .rsv[hidden]{display:none}

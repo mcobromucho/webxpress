@@ -1,0 +1,42 @@
+@media (pointer:coarse),(hover:none){.lc-s{display:none!important}html,body,a,button{cursor:auto!important}}
+@keyframes wxin-n{from{opacity:0;transform:translate3d(0,34px,0)}to{opacity:1;transform:none}}
+@keyframes wxin-p{from{opacity:0;transform:translate3d(0,-34px,0)}to{opacity:1;transform:none}}
+@media (max-width:860px){
+  html[data-dir="next"] .view.on{animation:wxin-n .52s cubic-bezier(.22,.8,.2,1) both}
+  html[data-dir="prev"] .view.on{animation:wxin-p .52s cubic-bezier(.22,.8,.2,1) both}
+  .view{overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;overflow-x:hidden}
+  .view>*{min-width:0;max-width:100%}
+}
+@media (hover:none){
+  .btn:active,.cats button:active,.tabs a:active,.dots a:active,.nl a:active,.rail a:active{transform:scale(.96);transition:transform .12s}
+}
+@media (max-width:860px){
+  .demo{justify-content:space-between;flex-wrap:nowrap;padding:.5rem 1rem;font-size:.76rem}
+  .demo>span:first-child{display:none}
+  .demo>span:last-child{display:flex;width:100%;justify-content:space-between;gap:1rem;font-size:0}
+  .demo>span:last-child a{font-size:.78rem}
+  h1{font-size:clamp(2.05rem,9.4vw,2.75rem);line-height:1.06;margin:.25rem 0 .8rem;text-wrap:balance}
+  h2{font-size:clamp(1.65rem,7.6vw,2.15rem);line-height:1.1;margin-bottom:.8rem;text-wrap:balance}
+  .sub,.lead,.mut{font-size:1rem;line-height:1.55;max-width:32ch}
+  .home,.hi,.sp,.py,.m,.hero,.sv,.ct,.lk,.cl,.pl,.rv,.hero2{padding:1.5rem 1.35rem 6.5rem!important;gap:1.3rem!important}
+  .home,.hi,.sp,.py,.hero,.sv,.ct,.lk,.cl,.pl{grid-template-columns:minmax(0,1fr)!important}
+  .home>*,.hi>*,.sp>*,.py>*,.hero>*,.sv>*,.ct>*,.lk>*{min-width:0}
+  .cl,.pl{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .pl,.ct{grid-template-columns:minmax(0,1fr)!important}
+  .acts .btn,.pact .btn{min-height:48px}
+  .note,.pro-p,.ck-sec,.adv,.m-hide{display:none!important}
+  .nl,.tabs,.dots,.rail{padding-bottom:calc(.5rem + env(safe-area-inset-bottom,0px))}
+  .nl a,.tabs a,.dots a{flex:1 1 auto;min-width:0;text-align:center;padding-inline:.3rem;font-size:.74rem;white-space:nowrap}
+  .nl{gap:0;margin-left:0}
+  .tabs{gap:0}.tabs a{padding-inline:.15rem;font-size:.7rem}
+}
+/* Ámbar Bistró */
+@media (max-width:860px){
+  #v-inicio .acts [data-deliv]{display:none}
+  #v-historia .hi .lead+.lead,#v-historia .tl,#v-historia .hi .qt,#v-historia .seal small{display:none}
+  #v-historia .seals{grid-template-columns:repeat(3,1fr);gap:.55rem}
+  #v-historia .seal{flex-direction:column;align-items:flex-start;gap:.35rem;padding:.8rem .75rem}
+  #v-historia .seal i{margin:0}#v-historia .seal b{font-size:.8rem}#v-historia .hp{height:9rem}
+  #v-menu .dish p{display:none}
+  #v-visitanos .qt{display:none}
+}

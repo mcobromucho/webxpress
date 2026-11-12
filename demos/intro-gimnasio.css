@@ -1,0 +1,40 @@
+/* Fuerza Gym · entrada "La carga": las placas se cargan en la barra, la barra se levanta y las puertas del gimnasio se abren */
+.gxs{display:grid;place-items:center}
+.gx-p{position:absolute;left:0;right:0;height:50.4%;z-index:0;background:#0D0F14 repeating-linear-gradient(115deg,transparent 0 26px,rgba(198,241,53,.04) 26px 28px);transition:transform .85s cubic-bezier(.76,0,.24,1)}
+.gx-top{top:0;border-bottom:3px solid #C6F135}.gx-bot{bottom:0;border-top:3px solid #C6F135}
+.gx-p::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 90% at 50% 100%,rgba(198,241,53,.16),transparent 70%)}
+.gx-bot::after{background:radial-gradient(60% 90% at 50% 0%,rgba(198,241,53,.16),transparent 70%)}
+.gx-c{position:relative;z-index:2;display:grid;justify-items:center;animation:gxshake 1.7s linear both;transition:opacity .35s,transform .7s cubic-bezier(.5,0,.2,1)}
+.gx-bar{position:relative;width:min(88vw,520px)}
+.gx-bar svg{display:block;width:100%;height:auto;overflow:visible;animation:gxlift .75s 1.9s cubic-bezier(.2,.8,.2,1) forwards}
+.gx-ring{position:absolute;left:50%;top:50%;width:46%;aspect-ratio:1;margin:-23% 0 0 -23%;border-radius:50%;border:2px solid #C6F135;opacity:0;animation:gxring .9s 1.95s ease-out forwards}
+.gx-pl{transform-box:fill-box;transform-origin:center;opacity:0;animation:gxl .5s var(--d) cubic-bezier(.2,.8,.2,1) forwards}
+.gx-pl.r{animation-name:gxr}
+.gx-kg{position:relative;display:flex;align-items:baseline;gap:.5rem;font:400 clamp(3.4rem,13vw,6.6rem)/.9 var(--hf);color:#C6F135;letter-spacing:.02em;margin-top:.2rem}
+.gx-n{position:relative;display:inline-grid;min-width:3ch;justify-items:end}
+.gx-n i{grid-area:1/1;font-style:normal;opacity:0;animation:gxn var(--w) steps(1,end) var(--a) forwards,gxpop .32s var(--a) both}
+.gx-kg span{font-size:.36em;color:#F4F5F7;letter-spacing:.12em;opacity:.8}
+.gx-t{display:flex;overflow:hidden;line-height:1;font:400 clamp(1.5rem,5.4vw,2.6rem)/1.05 var(--hf);letter-spacing:.34em;color:#F4F5F7;padding-left:.34em}
+.gx-t span{display:inline-block;transform:translateY(150%);animation:gxup .55s calc(1.35s + var(--i)*.05s) cubic-bezier(.2,.8,.2,1) forwards}
+.gx-seam{position:absolute;left:0;right:0;top:50%;height:3px;margin-top:-1.5px;z-index:3;background:#C6F135;box-shadow:0 0 26px 4px rgba(198,241,53,.7);transform:scaleX(0);opacity:0}
+@keyframes gxl{0%{opacity:1;transform:translateX(-340px)}68%{opacity:1;transform:translateX(7px) scaleY(.96)}100%{opacity:1;transform:none}}
+@keyframes gxr{0%{opacity:1;transform:translateX(340px)}68%{opacity:1;transform:translateX(-7px) scaleY(.96)}100%{opacity:1;transform:none}}
+@keyframes gxshake{0%,31%,40%,57%,66%,84%,93%,100%{transform:none}
+ 32.5%{transform:translate(-2px,4px)}35%{transform:translate(3px,-2px)}37.5%{transform:translate(-1px,1px)}
+ 59%{transform:translate(3px,6px)}61.5%{transform:translate(-4px,-3px)}64%{transform:translate(2px,1px)}
+ 86%{transform:translate(-5px,9px)}88.5%{transform:translate(6px,-5px)}91%{transform:translate(-2px,2px)}}
+@keyframes gxn{0%,99.9%{opacity:1}100%{opacity:0}}
+@keyframes gxpop{from{transform:scale(1.4)}to{transform:none}}
+@keyframes gxup{to{transform:none}}
+@keyframes gxlift{to{transform:translateY(-14px) scale(1.04);filter:drop-shadow(0 0 22px rgba(198,241,53,.6))}}
+@keyframes gxring{0%{opacity:.8;transform:scale(.5)}100%{opacity:0;transform:scale(2.6)}}
+/* salida: las puertas se abren por el centro con una raya de luz */
+.gxs.out{pointer-events:none}
+.gxs.out .gx-top{transform:translateY(-101%)}.gxs.out .gx-bot{transform:translateY(101%)}
+.gxs.out .gx-c{animation:none;opacity:0;transform:scale(1.18)}
+.gxs.out .gx-seam{animation:gxseam .85s cubic-bezier(.5,0,.2,1) forwards}
+@keyframes gxseam{0%{opacity:1;transform:scaleX(0)}35%{opacity:1;transform:scaleX(1)}100%{opacity:0;transform:scaleX(1)}}
+.gxs{animation:xiauto .01s 5.6s forwards}@keyframes xiauto{to{visibility:hidden;pointer-events:none}}
+.gx-kg b{font-weight:400}
+
+.gx-info{position:absolute;left:50%;top:calc(100% + .6rem);transform:translateX(-50%);display:grid;justify-items:center;gap:.5rem;width:max-content}

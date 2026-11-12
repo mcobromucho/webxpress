@@ -1,0 +1,76 @@
+/* WebXpress · capa visual compartida de las demos
+   Solo usa transform/opacity (GPU), sin filtros pesados. Se adapta a los colores de cada demo (--ac, --ac2). */
+
+/* ---------- Fondo vivo ---------- */
+.app>.view{z-index:1}
+.fxbg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;contain:strict}
+.fxbg i{position:absolute;border-radius:50%;opacity:var(--fxo,.34);will-change:transform;animation:fxdrift 24s ease-in-out infinite alternate}
+.fxbg .ba{width:46vmax;height:46vmax;left:-14vmax;top:-18vmax;background:radial-gradient(circle,var(--ac),transparent 66%)}
+.fxbg .bb{width:42vmax;height:42vmax;right:-12vmax;bottom:-16vmax;background:radial-gradient(circle,var(--ac2),transparent 66%);animation-duration:30s;animation-delay:-8s}
+.fxbg .bc{width:26vmax;height:26vmax;left:48%;top:36%;background:radial-gradient(circle,color-mix(in srgb,var(--ac2) 70%,var(--ac)),transparent 66%);opacity:calc(var(--fxo,.34)*.55);animation-duration:36s;animation-delay:-14s}
+/* cuadrícula suave que se desvanece hacia los bordes */
+.fxbg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(color-mix(in srgb,var(--fg) 7%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--fg) 7%,transparent) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 75%)}
+@keyframes fxdrift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(5vmax,4vmax,0) scale(1.12)}}
+
+/* ---------- Entrada escalonada ---------- */
+.view.on .fxr{animation:fxup .75s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--i,0)*65ms + 60ms)}
+@keyframes fxup{from{opacity:0;transform:translateY(18px)}}
+
+/* ---------- Texto con degradado ---------- */
+h1 em,h2 em{background:linear-gradient(100deg,var(--ac),var(--ac2),var(--ac));background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  padding:.08em .6em .2em .16em;margin:-.08em -.6em -.2em -.16em;-webkit-box-decoration-break:clone;box-decoration-break:clone;overflow:visible}
+
+/* ---------- Tarjetas de cristal con brillo que sigue al cursor ---------- */
+.card{position:relative;background:color-mix(in srgb,var(--card) 93%,transparent);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--ac) 16%,transparent),transparent 70%)}
+@media(hover:hover){
+  .card:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--ac) 50%,var(--line));box-shadow:0 26px 44px -26px color-mix(in srgb,var(--ac) 60%,transparent)}
+  .card:hover::after{opacity:1}
+}
+
+/* ---------- Botones ---------- */
+.btn{position:relative;overflow:hidden;isolation:isolate}
+.btn.fab{position:fixed}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.38) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.btn:hover::before{transform:translateX(120%)}
+.btn:active{transform:translateY(1px) scale(.98)}
+
+/* ---------- Elementos flotantes ---------- */
+.chip,.tag,.live .kp{animation:fxfloat 6.5s ease-in-out infinite}
+.c2,.t2,.live .kp+.kp{animation-delay:-3s}
+@keyframes fxfloat{50%{transform:translateY(-9px)}}
+.art::before{animation:fxspin 70s linear infinite}
+@keyframes fxspin{to{transform:rotate(360deg)}}
+
+/* ---------- Foto de portada (se activa sola cuando existe el archivo) ---------- */
+.ph{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none;background:color-mix(in srgb,var(--ac) 22%,var(--bg2))}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transform:scale(1.06);transition:opacity .9s ease,transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.ph.ld img{opacity:1;transform:none}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.28))}
+.has-ph>:not(.ph):not(.chip):not(.tag){position:relative;z-index:1}
+.has-ph.art .bd,.has-ph.arch>.ic,.has-ph.arch>.lgbig,.has-ph.plates>.fd{display:none}
+.has-ph.art::before{opacity:0}
+.has-ph .chip,.has-ph .tag{z-index:2}
+/* portada de fondo (gimnasio) */
+.ph.bgp{border-radius:0;opacity:.42}
+.ph.bgp::after{background:linear-gradient(90deg,var(--bg) 8%,transparent 70%),linear-gradient(0deg,var(--bg),transparent 40%)}
+
+/* ---------- Inclinación suave de la ilustración principal ---------- */
+.tilt{transition:transform .25s ease-out;will-change:transform}
+
+/* ---------- Logo ---------- */
+.lgm{display:grid;place-items:center;flex:none;width:2.5rem;height:2.5rem;line-height:0;background:none!important;border-radius:0!important;box-shadow:none!important}
+.lgm svg{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 10px color-mix(in srgb,var(--ac) 35%,transparent))}
+.brand b{background:linear-gradient(100deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font:inherit}
+
+@media(prefers-reduced-motion:reduce){.fxbg i,.chip,.tag,.kp,.art::before{animation:none!important}.fxr{animation:none!important}}
+@media(max-width:860px){.fxbg .bc{display:none}}
+h1,h2{overflow:visible;padding-right:.04em}
+.brand b,.brand .bn b{padding:0 .18em .1em 0;margin-right:-.18em}
+
+@media(min-width:861px){
+  .nl,.dots,.tabs{padding-inline:.1rem}
+  .nl a,.dots a,.tabs a{padding-inline:.45rem;overflow:visible}
+  .nl{margin-left:-.45rem;gap:.8rem}
+}
+@media(pointer:coarse),(hover:none){.lc-s{display:none!important}}

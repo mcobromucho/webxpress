@@ -1,0 +1,6 @@
+/* WebXpress · base común de las entradas animadas */
+.xs{position:fixed;inset:0;z-index:10000;overflow:hidden;contain:layout paint}
+.xi-skip .xs{display:none!important}
+/* mientras la entrada está activa, el contenido de la vista espera y luego se anima al abrirse */
+.xi-wait .view.on .fxr{animation:none!important;opacity:0}
+@media(prefers-reduced-motion:reduce){.xs{display:none!important}.xi-wait .view.on .fxr{opacity:1}}

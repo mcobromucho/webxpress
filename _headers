@@ -1,0 +1,27 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+/img/*
+  Cache-Control: public, max-age=604800
+/*.png
+  Cache-Control: public, max-age=604800
+
+/*.webp
+  Cache-Control: public, max-age=604800
+/*.jpg
+  Cache-Control: public, max-age=604800
+/*.svg
+  Cache-Control: public, max-age=604800
+/demos/fx.*
+  Cache-Control: public, max-age=86400
+
+/demos/wx-photo.*
+  Cache-Control: public, max-age=86400
+
+/demos/intro*
+  Cache-Control: public, max-age=86400
+
+/demos/luna-*
+  Cache-Control: public, max-age=86400

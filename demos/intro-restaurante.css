@@ -1,0 +1,30 @@
+/* Ámbar Bistró · entrada "La cloche": una campana de servicio cubre el plato, se levanta y el plato se abre hasta inundar la pantalla */
+.abs{display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,#2D7A60,#1F5A46 46%,#0E2B22);transition:opacity .5s .75s}
+.abs::before{content:"";position:absolute;inset:0;background:radial-gradient(40% 40% at 50% 46%,rgba(217,164,65,.28),transparent 70%);opacity:0;animation:abglow 1.4s .5s ease-out forwards}
+.ab-stage{position:relative;width:min(64vw,340px);aspect-ratio:1;font-size:min(64vw,340px)}
+.ab-plate{position:absolute;inset:0;border-radius:50%;display:grid;place-content:center;justify-items:center;text-align:center;
+  background:radial-gradient(circle at 50% 36%,#fff,#F4EEDF 58%,#E2D8BE);box-shadow:0 .09em .14em -.05em rgba(0,0,0,.55),inset 0 0 0 .012em rgba(0,0,0,.08);
+  transform:scale(.8);opacity:0;animation:abplate .8s .1s cubic-bezier(.2,.8,.2,1) forwards}
+.ab-plate::before{content:"";position:absolute;inset:11%;border-radius:50%;border:.008em solid rgba(217,164,65,.9);box-shadow:0 0 0 .02em rgba(217,164,65,.18)}
+.ab-plate b{font:700 .17em/1 var(--hf);color:#1F5A46;letter-spacing:-.01em;clip-path:inset(0 0 100% 0);animation:abname .9s 2s cubic-bezier(.2,.7,.2,1) forwards}
+.ab-plate small{font:600 .04em/1 var(--bf);letter-spacing:.34em;text-transform:uppercase;color:#B27F1F;margin-top:.7em;opacity:0;animation:abfade .7s 2.4s forwards;padding-left:.34em}
+.ab-flood{position:absolute;inset:0;border-radius:50%;background:#F7F3EA;opacity:0;transform:scale(1)}
+.ab-cloche{position:absolute;left:-6%;width:112%;bottom:30%;transform-origin:50% 100%;filter:drop-shadow(0 .05em .05em rgba(0,0,0,.35));opacity:0;
+  animation:abdrop .7s .25s cubic-bezier(.3,1.5,.5,1) forwards,abwiggle 1s 1.05s ease-in-out both,ablift 1s 1.95s cubic-bezier(.55,0,.25,1) forwards}
+.ab-steam{position:absolute;left:25%;width:50%;bottom:48%;overflow:visible;z-index:2}
+.ab-steam path{fill:none;stroke:rgba(255,255,255,.85);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:60;stroke-dashoffset:60;opacity:0;animation:abst 1.8s calc(2s + var(--i)*.22s) ease-out both}
+.ab-tag{position:absolute;left:50%;top:calc(100% + 1.6rem);transform:translateX(-50%);white-space:nowrap;font:500 .82rem var(--bf);letter-spacing:.22em;text-transform:uppercase;color:#F2D9A0;opacity:0;animation:abfade .8s 2.5s forwards}
+@keyframes abplate{to{opacity:1;transform:none}}
+@keyframes abglow{to{opacity:1}}
+@keyframes abdrop{0%{opacity:0;transform:translateY(-70%)}35%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes abwiggle{0%,100%{transform:none}18%{transform:translateY(-3%) rotate(-3deg)}36%{transform:rotate(2.5deg)}54%{transform:translateY(-2.5%) rotate(-2deg)}72%{transform:rotate(1.2deg)}}
+@keyframes ablift{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-150%) rotate(-9deg)}}
+@keyframes abst{0%{opacity:0;stroke-dashoffset:60;transform:translateY(8px)}25%{opacity:.9}100%{opacity:0;stroke-dashoffset:0;transform:translateY(-34px)}}
+@keyframes abname{to{clip-path:inset(0 0 -20% 0)}}
+@keyframes abfade{to{opacity:1}}
+/* salida: el plato crece hasta cubrir todo y el telón se disuelve sobre la página */
+.abs.out{opacity:0;pointer-events:none}
+.abs.out .ab-flood{opacity:1;transform:scale(18);transition:transform .95s cubic-bezier(.6,0,.2,1),opacity .15s}
+.abs.out .ab-tag{opacity:0;transition:opacity .2s;animation:none}
+.abs{animation:xiauto .01s 5.8s forwards}@keyframes xiauto{to{visibility:hidden;pointer-events:none}}
+@media(max-width:600px){.ab-tag{font-size:.7rem}}
