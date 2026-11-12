@@ -1,0 +1,19 @@
+# WebXpress
+
+> Páginas web profesionales para clínicas, consultorios y negocios locales en México, listas hoy y hechas para que te escriban. Entrega usual en 1 a 2 horas. Cada página incluye la base técnica para que Google y asistentes de IA puedan encontrarla y entenderla.
+
+## Paquetes (MXN)
+- Página Web: $1,900. Página personalizada con tus colores, textos y servicios, diseño perfecto en celular, tablet y computadora, botón de WhatsApp siempre visible, dominio por 6 meses, entrega en 1 a 2 horas y una ronda de ajustes.
+- Negocio: $2,900 (el más elegido). Todo lo de Página Web, secciones para agendar cita o pedir información en 2 toques, textos escritos como preguntan los clientes, base técnica para Google y las IAs y ayuda con Google Mi Negocio. Entrega en 1 a 2 horas, con prioridad.
+- Todo Incluido: $3,900. Todo lo de Negocio, dominio por 1 año, prioridad Express, revisión completa de la página actual y acompañamiento para aparecer en Google, ChatGPT, Gemini y Perplexity. Entrega el mismo día.
+
+Pago: la mitad al empezar o todo al final, con tarjeta o transferencia.
+
+## Qué incluye para visibilidad en Google e IAs
+- HTML semántico y datos estructurados (schema.org)
+- Texto escrito para responder las preguntas reales de los clientes
+- Sitemap, robots.txt, velocidad en celular y Google Mi Negocio
+
+## Enlaces
+- [Sitio principal](https://webxpress3.netlify.app/)
+- [Aviso de privacidad](https://webxpress3.netlify.app/privacidad.html)
