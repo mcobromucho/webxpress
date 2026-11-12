@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /demos/
+
+Sitemap: https://webxpress3.netlify.app/sitemap.xml
