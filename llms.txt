@@ -2,12 +2,15 @@
 
 > Páginas web profesionales para clínicas, consultorios y negocios locales en México, listas hoy y hechas para que te escriban. Entrega usual en 1 a 2 horas. Cada página incluye la base técnica para que Google y asistentes de IA puedan encontrarla y entenderla.
 
-## Paquetes (MXN)
-- Página Web: $1,900. Página personalizada con tus colores, textos y servicios, diseño perfecto en celular, tablet y computadora, botón de WhatsApp siempre visible, dominio por 6 meses, entrega en 1 a 2 horas y una ronda de ajustes.
-- Negocio: $2,900 (el más elegido). Todo lo de Página Web, secciones para agendar cita o pedir información en 2 toques, textos escritos como preguntan los clientes, base técnica para Google y las IAs y ayuda con Google Mi Negocio. Entrega en 1 a 2 horas, con prioridad.
-- Todo Incluido: $3,900. Todo lo de Negocio, dominio por 1 año, prioridad Express, revisión completa de la página actual y acompañamiento para aparecer en Google, ChatGPT, Gemini y Perplexity. Entrega el mismo día.
+## Paquetes (MXN, pago único)
+- Página Web Esencial: $2,500. Diseño profesional adaptado a celular y computadora, catálogo de servicios, ubicación y horarios, botón de WhatsApp siempre visible, base técnica para Google e IAs (ChatGPT, Gemini, Perplexity). Entrega usual en 1 a 2 horas (máximo 24 hrs).
+- Negocio · Ventas y Citas: $4,500 (el más elegido). Todo lo del paquete Esencial, dominio .com por 1 año, sistema de agendamiento con horarios en tiempo real, preguntas frecuentes e integración con Google Maps y Google Mi Negocio.
+- Todo Incluido · Sistema 24/7: $6,900. Todo lo del paquete Negocio, comparador Antes y Después deslizable, portada dinámica con video optimizado, modo claro y oscuro automático, soporte prioritario y ajustes sin costo durante los primeros 30 días.
 
-Pago: la mitad al empezar o todo al final, con tarjeta o transferencia.
+Pago: 50% de anticipo para registrar el dominio y arrancar, y 50% al entregar la página operando en línea. Si ya tienes dominio propio, se conecta sin costo extra.
+
+## Servicios adicionales (por cotizar)
+Logo profesional, redacción de contenidos, Google Mi Negocio, catálogo de WhatsApp, menú digital con QR, invitaciones digitales, agenda de citas, cobro en línea, publicaciones para redes y rediseño web. Agenda y Google Mi Negocio/Maps ya vienen incluidos en Negocio y Todo Incluido.
 
 ## Qué incluye para visibilidad en Google e IAs
 - HTML semántico y datos estructurados (schema.org)
@@ -15,5 +18,11 @@ Pago: la mitad al empezar o todo al final, con tarjeta o transferencia.
 - Sitemap, robots.txt, velocidad en celular y Google Mi Negocio
 
 ## Enlaces
-- [Sitio principal](https://webxpress3.netlify.app/)
-- [Aviso de privacidad](https://webxpress3.netlify.app/privacidad.html)
+- [Sitio principal](https://iwebxpress.vercel.app/)
+- [Aviso de privacidad](https://iwebxpress.vercel.app/privacidad.html)
+
+## Contacto
+- WhatsApp: +52 228 215 9274
+- Correo: mcobromucho@gmail.com
+- Ubicación: Xalapa, Veracruz, México
+- Facebook: https://www.facebook.com/profile.php?id=61596115962687
