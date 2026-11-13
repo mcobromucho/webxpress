@@ -1,6 +1,6 @@
 /* WebXpress · cobro con tarjeta estilo Stripe Checkout.
    Por defecto es una SIMULACIÓN: no usa servidor, no envía ni guarda datos y solo acepta tarjetas de prueba.
-   Para cobrar de verdad, llena STRIPE (ver LEEME-STRIPE.md): con links de pago o con la función de Netlify. */
+   Para cobrar de verdad, llena STRIPE (ver LEEME-STRIPE.md): con links de pago o con la función de Vercel. */
 (() => {
   const v = document.querySelector("#v-pagar"); if (!v) return;
   const $ = (s, r = v) => r.querySelector(s), $$ = (s, r = v) => [...r.querySelectorAll(s)];
@@ -8,7 +8,7 @@
 
   const STRIPE = {
     links: {},      // { anticipo: "https://buy.stripe.com/...", valoracion: "...", limpieza: "..." }
-    endpoint: ""    // "/.netlify/functions/checkout"
+    endpoint: ""    // "/api/checkout"
   };
   const live = !!(STRIPE.endpoint || Object.keys(STRIPE.links).length);
   const MXN = n => "$" + n.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
